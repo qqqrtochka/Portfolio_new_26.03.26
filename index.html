@@ -5,13 +5,14 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="color-scheme" content="dark" />
-	<meta name="theme-color" content="#0b0b0d" />
+	<meta name="theme-color" content="#12072a" />
 
 	<title>Alexander Tanin — Web Developer</title>
 	<meta name="description"
 		content="Минималистичный лендинг-портфолио: представляю себя как WEB‑разработчик (frontend/fullstack)." />
 
 	<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
 	<link rel="stylesheet" href="main.css" />
 	<script defer src="main.js"></script>
 </head>
@@ -28,6 +29,11 @@
 			</a>
 
 			<nav class="nav" aria-label="Разделы">
+				<button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
+					<span class="nav-toggle__line"></span>
+					<span class="nav-toggle__line"></span>
+					<span class="nav-toggle__line"></span>
+				</button>
 				<a class="nav__link" href="#about">Обо мне</a>
 				<a class="nav__link" href="#projects">Проекты</a>
 				<a class="nav__link" href="#contact">Контакты</a>
@@ -38,6 +44,7 @@
 
 	<main id="content" class="screen-scroll" tabindex="-1">
 		<section class="screen screen--hero" id="home" data-screen aria-label="Главный экран">
+			<div class="hero__accent" aria-hidden="true">\</div>
 			<div class="container section__grid hero__grid">
 				<div class="hero__copy">
 					<p class="kicker">WEB DEVELOPER</p>
@@ -70,15 +77,18 @@
 				</div>
 
 				<div class="hero__tiles" aria-label="Что я делаю">
-					<article class="card tile">
+					<article class="card tile tile--dev">
+						<span class="tile__dot" aria-hidden="true"></span>
 						<h3 class="tile__title">Разработка</h3>
 						<p class="tile__text">Лендинги, корпоративные сайты, личные кабинеты.</p>
 					</article>
-					<article class="card tile">
+					<article class="card tile tile--seo">
+						<span class="tile__dot" aria-hidden="true"></span>
 						<h3 class="tile__title">Оптимизация</h3>
 						<p class="tile__text">Скорость, доступность, базовая SEO‑структура.</p>
 					</article>
-					<article class="card tile">
+					<article class="card tile tile--support">
+						<span class="tile__dot" aria-hidden="true"></span>
 						<h3 class="tile__title">Поддержка</h3>
 						<p class="tile__text">Правки, улучшения, мониторинг, обновления.</p>
 					</article>
@@ -103,17 +113,40 @@
 
 					<div class="card skills">
 						<h3 class="card__title">Навыки</h3>
-						<ul class="chips" aria-label="Список навыков">
-							<li class="chip chip--html">HTML5</li>
-							<li class="chip chip--css">CSS3</li>
-							<li class="chip chip--js">JavaScript</li>
-							<li class="chip chip--ts">TypeScript</li>
-							<li class="chip chip--react">React</li>
-							<li class="chip chip--node">Node.js</li>
-							<li class="chip chip--api">REST API</li>
-							<li class="chip chip--git">Git</li>
-							<li class="chip chip--figma">Figma</li>
-						</ul>
+						<div class="skills-ribbon" aria-label="Список навыков">
+							<div class="skill-badge" data-tooltip="Разметка и структура страниц">
+								<i class="devicon-html5-plain colored" aria-hidden="true"></i>
+								<span>HTML5</span>
+							</div>
+							<div class="skill-badge" data-tooltip="Стилизация, анимации, адаптив">
+								<i class="devicon-css3-plain colored" aria-hidden="true"></i>
+								<span>CSS3</span>
+							</div>
+							<div class="skill-badge" data-tooltip="Интерактивность и логика на клиенте">
+								<i class="devicon-javascript-plain colored" aria-hidden="true"></i>
+								<span>JS</span>
+							</div>
+							<div class="skill-badge" data-tooltip="Типизированный JavaScript">
+								<i class="devicon-typescript-plain colored" aria-hidden="true"></i>
+								<span>TS</span>
+							</div>
+							<div class="skill-badge" data-tooltip="UI-компоненты и SPA приложения">
+								<i class="devicon-react-original colored" aria-hidden="true"></i>
+								<span>React</span>
+							</div>
+							<div class="skill-badge" data-tooltip="Серверная логика и REST API">
+								<i class="devicon-nodejs-plain colored" aria-hidden="true"></i>
+								<span>Node.js</span>
+							</div>
+							<div class="skill-badge" data-tooltip="Контроль версий и командная работа">
+								<i class="devicon-git-plain colored" aria-hidden="true"></i>
+								<span>Git</span>
+							</div>
+							<div class="skill-badge" data-tooltip="Прототипирование и работа с макетами">
+								<i class="devicon-figma-plain colored" aria-hidden="true"></i>
+								<span>Figma</span>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -212,6 +245,15 @@
 			</div>
 		</section>
 	</main>
+
+	<!-- Grain / noise texture overlay -->
+	<svg class="noise-layer" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+		<filter id="grain">
+			<feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="3" stitchTiles="stitch" result="noise"/>
+			<feColorMatrix type="saturate" values="0" in="noise"/>
+		</filter>
+		<rect width="100%" height="100%" filter="url(#grain)"/>
+	</svg>
 </body>
 
 </html>

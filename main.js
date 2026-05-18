@@ -412,6 +412,34 @@
 		}
 	});
 
+	// Hamburger menu toggle
+	const navToggle = document.querySelector(".nav-toggle");
+	const nav = document.querySelector(".nav");
+	if (navToggle && nav) {
+		const closeMobileNav = () => {
+			nav.classList.remove("is-open");
+			navToggle.setAttribute("aria-expanded", "false");
+			navToggle.setAttribute("aria-label", "Открыть меню");
+		};
+
+		navToggle.addEventListener("click", (e) => {
+			e.stopPropagation();
+			const isOpen = nav.classList.toggle("is-open");
+			navToggle.setAttribute("aria-expanded", String(isOpen));
+			navToggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+		});
+
+		// Close when a nav link is clicked
+		nav.querySelectorAll(".nav__link, .nav > .btn").forEach((link) => {
+			link.addEventListener("click", closeMobileNav);
+		});
+
+		// Close when clicking outside the nav
+		document.addEventListener("click", (e) => {
+			if (!nav.contains(e.target)) closeMobileNav();
+		});
+	}
+
 	// Current year
 	const year = document.querySelector("[data-year]");
 	if (year) year.textContent = String(new Date().getFullYear());
